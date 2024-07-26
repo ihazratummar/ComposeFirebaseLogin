@@ -45,7 +45,7 @@ fun DrawScope.drawEllipseHalfOutsideTopLeftCorner(height: Dp, width: Dp, density
 }
 
 @Composable
-fun CustomTextFiend(
+fun CustomTextField(
     label: @Composable (() -> Unit)? = null,
     placeholder: @Composable (() -> Unit)? = null,
     leadingIcon: @Composable (() -> Unit)? = null,
@@ -75,5 +75,4 @@ fun CustomTextFiend(
         interactionSource = interactionSource,
         modifier = Modifier.fillMaxWidth()
     )
-
 }

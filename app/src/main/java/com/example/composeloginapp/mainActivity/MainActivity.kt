@@ -11,12 +11,15 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.ui.Modifier
 import com.example.composeloginapp.auth.AuthViewModel
 import com.example.composeloginapp.navigation.NavGraph
-import com.example.composeloginapp.navigation.Route
 import com.example.composeloginapp.ui.theme.ComposeLoginAppTheme
+import dagger.hilt.android.AndroidEntryPoint
 
+
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 
-    private val viewModel by viewModels<AuthViewModel>()
+    private val authViewModel by viewModels<AuthViewModel>()
+    private val viewModel by viewModels<MainViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,8 +29,8 @@ class MainActivity : ComponentActivity() {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     NavGraph(
                         modifier = Modifier.padding(innerPadding).fillMaxSize(),
-                        startDestination = Route.LoginScreen.route,
-                        authViewModel = viewModel
+                        startDestination = viewModel.startDestination.value,
+                        authViewModel = authViewModel
                     )
                 }
             }

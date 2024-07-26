@@ -3,7 +3,9 @@ package com.example.composeloginapp.navigation
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.rounded.*
+import androidx.compose.material.icons.rounded.Home
+import androidx.compose.material.icons.rounded.Notifications
+import androidx.compose.material.icons.rounded.Settings
 import androidx.compose.material3.Badge
 import androidx.compose.material3.BadgedBox
 import androidx.compose.material3.Icon
@@ -23,12 +25,10 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.composeloginapp.auth.AuthState
 import com.example.composeloginapp.auth.AuthViewModel
 import com.example.composeloginapp.presentation.HomeScreen
-import com.example.composeloginapp.presentation.NavItem
 import com.example.composeloginapp.presentation.NotificationScreen
 import com.example.composeloginapp.presentation.SettingScreen
 

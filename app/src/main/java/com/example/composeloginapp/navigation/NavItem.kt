@@ -1,4 +1,4 @@
-package com.example.composeloginapp.presentation
+package com.example.composeloginapp.navigation
 
 import androidx.compose.ui.graphics.vector.ImageVector
 

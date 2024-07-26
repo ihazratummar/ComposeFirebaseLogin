@@ -1,8 +1,10 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
-    id ("kotlin-kapt")
+    alias(libs.plugins.google.devtools.ksp)
     id("com.google.gms.google-services")
+    id("org.jetbrains.kotlin.plugin.compose")
+    id("com.google.dagger.hilt.android")
 }
 
 android {
@@ -42,7 +44,7 @@ android {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.1"
+        kotlinCompilerExtensionVersion = "1.5.14"
     }
     packaging {
         resources {
@@ -71,12 +73,29 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 
-
+    //Firebase
     implementation (libs.firebase.auth.ktx)
     implementation (libs.play.services.auth)
+
+    implementation (libs.firebase.database)
+    platform(libs.firebase.bom.v2821)
 
     implementation (libs.androidx.lifecycle.viewmodel.compose)
     implementation (libs.androidx.lifecycle.runtime.compose)
     implementation (libs.androidx.navigation.compose)
     implementation (libs.coil.compose)
+
+    //One Signal Dependency
+    implementation (libs.onesignal)
+
+
+    //Room Dependency
+    implementation(libs.androidx.room.runtime)
+    annotationProcessor(libs.androidx.room.compiler)
+    implementation(libs.androidx.room.ktx)
+    ksp(libs.androidx.room.compiler)
+
+    //DaggerHilt
+    implementation(libs.hilt.android)
+    ksp(libs.hilt.compiler)
 }

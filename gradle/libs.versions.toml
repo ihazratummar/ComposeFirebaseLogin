@@ -1,26 +1,36 @@
 [versions]
-agp = "8.5.0"
+agp = "8.5.1"
 coilCompose = "2.6.0"
 firebaseAuthKtx = "23.0.0"
-firebaseBom = "33.1.1"
-kotlin = "1.9.0"
+firebaseBom = "33.1.2"
+firebaseBomVersion = "33.1.2"
+firebaseDatabase = "21.0.0"
+kotlin = "2.0.0"
 coreKtx = "1.13.1"
 junit = "4.13.2"
-junitVersion = "1.1.5"
-espressoCore = "3.5.1"
-lifecycleRuntimeCompose = "2.8.2"
-lifecycleRuntimeKtx = "2.8.2"
+junitVersion = "1.2.1"
+espressoCore = "3.6.1"
+lifecycleRuntimeCompose = "2.8.3"
+lifecycleRuntimeKtx = "2.8.3"
 activityCompose = "1.9.0"
 composeBom = "2024.06.00"
 firebaseAuth = "23.0.0"
-lifecycleViewmodelCompose = "2.8.2"
+lifecycleViewmodelCompose = "2.8.3"
 navigationCompose = "2.7.7"
+onesignal = "[5.0.0,5.99.99)"
+onesignalGradlePlugin = "[0.12.10, 0.99.99)"
 playServicesAuth = "21.2.0"
 googleServices = "4.4.2"
 runtimeLivedata = "1.6.8"
+roomCompiler = "2.6.1"
+hiltCompiler = "2.51.1"
+ksp = "2.0.0-1.0.22"
 
 [libraries]
+compose-compiler-gradle-plugin = { module = "org.jetbrains.kotlin:compose-compiler-gradle-plugin", version.ref = "kotlin" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+firebase-bom-v2821 = { module = "com.google.firebase:firebase-bom", version.ref = "firebaseBomVersion" }
+firebase-database = { module = "com.google.firebase:firebase-database", version.ref = "firebaseDatabase" }
 google-services = { module = "com.google.gms:google-services", version.ref = "googleServices" }
 androidx-lifecycle-runtime-compose = { module = "androidx.lifecycle:lifecycle-runtime-compose", version.ref = "lifecycleRuntimeCompose" }
 androidx-lifecycle-viewmodel-compose = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "lifecycleViewmodelCompose" }
@@ -28,7 +38,6 @@ androidx-navigation-compose = { module = "androidx.navigation:navigation-compose
 coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coilCompose" }
 firebase-analytics = { module = "com.google.firebase:firebase-analytics" }
 firebase-auth-ktx = { module = "com.google.firebase:firebase-auth-ktx", version.ref = "firebaseAuthKtx" }
-firebase-bom = { module = "com.google.firebase:firebase-bom", version.ref = "firebaseBom" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
@@ -43,11 +52,21 @@ androidx-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-man
 androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
 androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
 firebase-auth = { group = "com.google.firebase", name = "firebase-auth", version.ref = "firebaseAuth" }
+onesignal = { module = "com.onesignal:OneSignal", version.ref = "onesignal" }
+onesignal-gradle-plugin = { module = "gradle.plugin.com.onesignal:onesignal-gradle-plugin", version.ref = "onesignalGradlePlugin" }
 play-services-auth = { module = "com.google.android.gms:play-services-auth", version.ref = "playServicesAuth" }
 androidx-runtime-livedata = { group = "androidx.compose.runtime", name = "runtime-livedata", version.ref = "runtimeLivedata" }
+hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hiltCompiler" }
+hilt-android-gradle-plugin = { module = "com.google.dagger:hilt-android-gradle-plugin", version.ref = "hiltCompiler" }
+hilt-compiler = { module = "com.google.dagger:hilt-compiler", version.ref = "hiltCompiler" }
+androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref = "roomCompiler" }
+androidx-room-ktx = { module = "androidx.room:room-ktx", version.ref = "roomCompiler" }
+androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "roomCompiler" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 android-firebase = {id ="com.google.gms.google-services", version.ref = "firebaseBom"}
+google-devtools-ksp = { id = "com.google.devtools.ksp", version.ref ="ksp"}
+android-room = {id= "androidx.room", version.ref ="roomCompiler"}
 

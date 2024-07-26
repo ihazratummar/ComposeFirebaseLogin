@@ -46,7 +46,7 @@ import androidx.navigation.NavController
 import com.example.composeloginapp.R
 import com.example.composeloginapp.auth.AuthState
 import com.example.composeloginapp.auth.AuthViewModel
-import com.example.composeloginapp.auth.screens.components.CustomTextFiend
+import com.example.composeloginapp.auth.screens.components.CustomTextField
 import com.example.composeloginapp.auth.screens.components.Eclipse
 import com.example.composeloginapp.navigation.Route
 
@@ -95,7 +95,7 @@ fun LoginScreen(navController: NavController, authViewModel:AuthViewModel) {
             color = Color(0xFFA8A6A7)
         )
         Spacer(modifier = Modifier.height(100.dp))
-        CustomTextFiend(
+        CustomTextField(
             label = { Text(text = "Email") },
             placeholder = { Text(text = "Enter Your Email") },
             leadingIcon = {
@@ -110,7 +110,7 @@ fun LoginScreen(navController: NavController, authViewModel:AuthViewModel) {
             imeAction = ImeAction.Next
         )
         Spacer(modifier = Modifier.height(5.dp))
-        CustomTextFiend(
+        CustomTextField(
             label = { Text(text = "Password") },
             placeholder = { Text(text = "Enter Your Password") },
             leadingIcon = {
