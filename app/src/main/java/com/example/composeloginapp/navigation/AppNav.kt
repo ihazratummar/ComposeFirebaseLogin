@@ -30,10 +30,13 @@ import com.example.composeloginapp.auth.AuthState
 import com.example.composeloginapp.auth.AuthViewModel
 import com.example.composeloginapp.presentation.HomeScreen
 import com.example.composeloginapp.presentation.NotificationScreen
-import com.example.composeloginapp.presentation.SettingScreen
+import com.example.composeloginapp.presentation.profile.SettingScreen
 
 @Composable
-fun AppNav(navController: NavController, authViewModel: AuthViewModel) {
+fun AppNavigation(
+    navController: NavController,
+    authViewModel: AuthViewModel,
+) {
     val authState = authViewModel.authState.observeAsState()
     LaunchedEffect(authState.value) {
         when (authState.value) {
@@ -74,8 +77,8 @@ fun AppNav(navController: NavController, authViewModel: AuthViewModel) {
                         },
                         icon = {
                             BadgedBox(badge = {
-                                if (navItem.badge != null){
-                                    Badge(){
+                                if (navItem.badge != null) {
+                                    Badge() {
                                         Text(text = navItem.badge.toString())
                                     }
                                 }
@@ -93,16 +96,21 @@ fun AppNav(navController: NavController, authViewModel: AuthViewModel) {
             modifier = Modifier.padding(it),
             selectedIndex,
             navController,
-            authViewModel
+            authViewModel,
         )
     }
 }
 
 @Composable
-fun ContentScreen(modifier: Modifier = Modifier, selectedIndex: Int, navController: NavController, authViewModel:AuthViewModel) {
-    when(selectedIndex){
-        0-> HomeScreen(navController = navController)
-        1-> NotificationScreen(navController = navController)
-        2-> SettingScreen(navController = navController, authViewModel)
+fun ContentScreen(
+    modifier: Modifier = Modifier,
+    selectedIndex: Int,
+    navController: NavController,
+    authViewModel: AuthViewModel,
+) {
+    when (selectedIndex) {
+        0 -> HomeScreen(navController = navController, authViewModel)
+        1 -> NotificationScreen(navController = navController)
+        2 -> SettingScreen(navController = navController)
     }
 }

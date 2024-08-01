@@ -11,7 +11,7 @@ import javax.inject.Inject
 @HiltViewModel
 class MainViewModel @Inject constructor() : ViewModel() {
 
-    private val _startDestination = mutableStateOf(Route.LoginScreen.route)
+    private val _startDestination = mutableStateOf(Route.AuthNav.route)
     val startDestination: State<String> = _startDestination
 
 }

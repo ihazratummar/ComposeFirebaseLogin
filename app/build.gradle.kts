@@ -80,6 +80,8 @@ dependencies {
     implementation (libs.firebase.database)
     platform(libs.firebase.bom.v2821)
 
+    implementation(libs.firebase.firestore)
+
     implementation (libs.androidx.lifecycle.viewmodel.compose)
     implementation (libs.androidx.lifecycle.runtime.compose)
     implementation (libs.androidx.navigation.compose)
@@ -95,7 +97,8 @@ dependencies {
     implementation(libs.androidx.room.ktx)
     ksp(libs.androidx.room.compiler)
 
-    //DaggerHilt
+    //Dagger Hilt
     implementation(libs.hilt.android)
-    ksp(libs.hilt.compiler)
+    ksp(libs.hilt.android.compiler)
+    implementation(libs.androidx.hilt.navigation.compose)
 }

@@ -11,6 +11,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.ui.Modifier
 import com.example.composeloginapp.auth.AuthViewModel
 import com.example.composeloginapp.navigation.NavGraph
+import com.example.composeloginapp.presentation.profile.SettingViewModel
 import com.example.composeloginapp.ui.theme.ComposeLoginAppTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -30,7 +31,7 @@ class MainActivity : ComponentActivity() {
                     NavGraph(
                         modifier = Modifier.padding(innerPadding).fillMaxSize(),
                         startDestination = viewModel.startDestination.value,
-                        authViewModel = authViewModel
+                        authViewModel = authViewModel,
                     )
                 }
             }

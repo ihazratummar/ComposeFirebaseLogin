@@ -13,12 +13,16 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.width
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Warning
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonColors
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.derivedStateOf
@@ -51,28 +55,34 @@ import com.example.composeloginapp.auth.screens.components.Eclipse
 import com.example.composeloginapp.navigation.Route
 
 @Composable
-fun LoginScreen(navController: NavController, authViewModel:AuthViewModel) {
+fun LoginScreen(navController: NavController, authViewModel: AuthViewModel) {
 
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
     var passwordVisible by remember { mutableStateOf(false) }
     val isFormValid by remember {
         derivedStateOf {
-            email.isNotBlank() && password.isNotBlank()
+            email.isNotBlank() && password.isNotBlank() && password.length >= 8
         }
     }
     val context = LocalContext.current
     val authState = authViewModel.authState.observeAsState()
     LaunchedEffect(authState.value) {
-        when(authState.value){
+        when (authState.value) {
             is AuthState.Authenticated -> {
                 navController.navigate(Route.AppNav.route) {
                     popUpTo(Route.LoginScreen.route) { inclusive = true }
                 }
             }
+
             is AuthState.Error -> {
-                Toast.makeText(context, (authState.value as AuthState.Error).message, Toast.LENGTH_LONG).show()
+                Toast.makeText(
+                    context,
+                    (authState.value as AuthState.Error).message,
+                    Toast.LENGTH_LONG
+                ).show()
             }
+
             else -> Unit
         }
     }
@@ -137,19 +147,29 @@ fun LoginScreen(navController: NavController, authViewModel:AuthViewModel) {
             },
             visualTransformation = if (passwordVisible) VisualTransformation.None else PasswordVisualTransformation()
         )
-        Spacer(modifier = Modifier.height(35.dp))
+        Spacer(modifier = Modifier.height(5.dp))
+        TextButton(onClick = { navController.navigate(route = Route.ForgotPassword.route)}) {
+            Row (
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.spacedBy(10.dp),
+            ){
+                Icon(painter =  painterResource(id = R.drawable.alert), contentDescription = "Forgot password")
+                Text(text = "Forgot Password", color = MaterialTheme.colorScheme.error)
+            }
+        }
+        Spacer(modifier = Modifier.height(25.dp))
         Button(
             onClick = {
                 authViewModel.login(email, password)
             },
             modifier = Modifier.fillMaxWidth(),
             colors = ButtonColors(
-                containerColor = Color(0xFF222222),
-                contentColor = Color(0xFFFFFFFF),
-                disabledContentColor = Color.Gray,
-                disabledContainerColor = Color(0xFF222222),
+                containerColor = MaterialTheme.colorScheme.primaryContainer,
+                contentColor = MaterialTheme.colorScheme.onPrimaryContainer,
+                disabledContainerColor = MaterialTheme.colorScheme.surfaceContainerLow,
+                disabledContentColor = MaterialTheme.colorScheme.onSurfaceVariant,
 
-            ),
+                ),
             enabled = isFormValid && authState.value != AuthState.Loading
         ) {
             Text(
@@ -158,6 +178,7 @@ fun LoginScreen(navController: NavController, authViewModel:AuthViewModel) {
                 fontSize = 22.sp
             )
         }
+
         Spacer(modifier = Modifier.height(15.dp))
         Row {
             Text(
@@ -216,15 +237,7 @@ fun LoginScreen(navController: NavController, authViewModel:AuthViewModel) {
             )
         }
         Spacer(modifier = Modifier.height(30.dp))
-        Text(
-            text = "Skip Now -->",
-            fontFamily = FontFamily(Font(R.font.nunitoregular)),
-            fontSize = 16.sp,
-            color = Color(0xFFA8A6A7),
-            modifier = Modifier.clickable {
-                /*TODO*/
-            }
-        )
+
     }
 }
 

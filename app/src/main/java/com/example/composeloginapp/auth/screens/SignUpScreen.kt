@@ -213,8 +213,8 @@ fun SignUpScreen(navController: NavController, authViewModel: AuthViewModel) {
             },
             modifier = Modifier.fillMaxWidth(),
             colors = ButtonColors(
-                containerColor = Color(0xFF222222),
-                contentColor = Color(0xFFFFFFFF),
+                containerColor = MaterialTheme.colorScheme.secondaryContainer,
+                contentColor = MaterialTheme.colorScheme.onSecondaryContainer,
                 disabledContentColor = Color.Gray,
                 disabledContainerColor = Color(0xFF222222)
             ),
@@ -246,15 +246,5 @@ fun SignUpScreen(navController: NavController, authViewModel: AuthViewModel) {
             )
         }
         Spacer(modifier = Modifier.height(30.dp))
-        Text(
-            text = "Skip Now -->",
-            fontFamily = FontFamily(Font(R.font.nunitoregular)),
-            fontSize = 16.sp,
-            color = Color(0xFFA8A6A7),
-            modifier = Modifier.clickable {
-                /*TODO*/
-                Toast.makeText(context, "Skip to Main screen" , Toast.LENGTH_LONG).show()
-            }
-        )
     }
 }

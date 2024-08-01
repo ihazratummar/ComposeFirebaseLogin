@@ -38,8 +38,8 @@ fun DrawScope.drawEllipseHalfOutsideTopLeftCorner(height: Dp, width: Dp, density
     val ellipseWidth = width.toPx()
     val ellipseHeight = height.toPx()
     drawOval(
-        color = Color(0xFFA8A6A7).copy(density),
-        topLeft = Offset(x = -ellipseWidth / 2, y = -ellipseHeight / 2),
+        color = Color(0xFFFFFFFF).copy(density),
+        topLeft = Offset(x = - ellipseWidth / 2, y = -ellipseHeight / 2),
         size = Size(ellipseWidth, ellipseHeight)
     )
 }
